@@ -1,4 +1,3 @@
-# напиши здесь свое приложение
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -9,10 +8,8 @@ from kivy.core.window import Window
 from kivy.uix.image import Image
 
 from pytube import YouTube
-import os
 
 Window.clearcolor = '#d62926'
-
 class Scr1(Screen):
    ''' Тут виджеты первого экрана'''
    def __init__(self, **kwargs):
@@ -20,11 +17,10 @@ class Scr1(Screen):
 
       img1 = Image(source="puls2.jpg")
 
-      pulse1 = Label(text="Скачаем музычку!", size_hint=(0.5, 0.5), pos_hint={'center_x': 0.5}, font_size = '30dp' )
+      pulse1 = Label(text="Скачиваем музычку!", size_hint=(0.5, 0.5), pos_hint={'center_x': 0.5}, font_size = '30dp' )
             
       imya1 = Label(text='Закидывай сюда ссылочку на Ютюб', size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5})
       self.in_name = TextInput(size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5}, multiline=False)
-
 
       self.btn = Button(text='Погнали!', pos_hint={'center_x': 0.5},  size_hint=(0.5, 0.2))
       self.btn.background_color = (1,0,0,1)
@@ -36,7 +32,6 @@ class Scr1(Screen):
       line1.add_widget(imya1)
       line1.add_widget(self.in_name)
 
-
       line1.add_widget(self.btn)
 
       self.add_widget(line1)
@@ -46,8 +41,6 @@ class Scr1(Screen):
       global link
       link = self.in_name.text
       self.manager.current = 'scr2'
-
-
 class Scr2(Screen):
    ''' Тут виджеты 3-го экрана'''
    def __init__(self, **kwargs):
@@ -69,19 +62,14 @@ class Scr2(Screen):
   
    def before(self):
       global link
-      print(link)
       yt = YouTube(str(link))
       videos = yt.streams.get_audio_only()
       videos.download()
 
-
    def nazad(self):
       self.manager.current = 'scr1'
-
-
- 
 class Windows10(App):
-   ''' Тут создаются экраны '''
+
    def build(self):
       sm = ScreenManager()
       sm.add_widget(Scr1(name='scr1'))
