@@ -8,7 +8,6 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
 from pytube import YouTube
 
-Window.clearcolor = '#d62926'
 
 class Scr1(Screen):
     def __init__(self, **x):
@@ -28,10 +27,11 @@ class Scr1(Screen):
 class Scr2(Screen):
     def __init__(self, **x):
         super().__init__(**x)
-        self.btn2 = Button(text='Назад')
+        self.btn2 = Button(text='Назад', size_hint=(0.5, 0.2))
+        self.add_widget(self.btn2)
         self.btn2.on_press = self.gofirst
     def gofirst(self):
-        self.manager.current = 'scr2'
+        self.manager.current = 'scr1'
 
 
 class Windows10(App):
