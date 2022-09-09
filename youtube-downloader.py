@@ -49,7 +49,7 @@ class Scr2(Screen):
       self.img2.source = 'not-bad.jpg'
       self.outer = BoxLayout(orientation='vertical', padding=50, spacing=8)
       self.instr = Label(text = '', font_size = '30dp')
-      self.instr.text = 'Файлик скачивается!'
+      self.instr.text = 'Файл скачивается!'
       self.btn3 = Button(text='Ещё разок?', pos_hint={'center_x': 0.5},  size_hint=(0.3, 0.1))
       self.btn3.background_color = (1,0,0,1)
 
@@ -62,9 +62,13 @@ class Scr2(Screen):
   
    def before(self):
       global link
-      yt = YouTube(str(link))
-      videos = yt.streams.get_audio_only()
-      videos.download()
+      try:
+         yt = YouTube(str(link))
+         videos = yt.streams.get_audio_only()
+         videos.download()
+      except:
+         self.instr.text = 'Какая-то беда со ссылкой, не могу скачать...'
+         self.img2.source = 'bad.jpg'
 
    def nazad(self):
       self.manager.current = 'scr1'
