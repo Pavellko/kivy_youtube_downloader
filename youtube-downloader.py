@@ -41,6 +41,7 @@ class Scr1(Screen):
       global link
       link = self.in_name.text
       self.manager.current = 'scr2'
+
 class Scr2(Screen):
    ''' Тут виджеты 3-го экрана'''
    def __init__(self, **kwargs):
@@ -78,7 +79,6 @@ class Windows10(App):
       sm = ScreenManager()
       sm.add_widget(Scr1(name='scr1'))
       sm.add_widget(Scr2(name='scr2'))
-
       return sm
  
 app = Windows10()
