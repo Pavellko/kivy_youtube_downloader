@@ -8,11 +8,11 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.image import Image
 from pytube import YouTube
 
-
+Window.clearcolor = (1, 0, 0, 1)
 class Scr1(Screen):
     def __init__(self, **x):
         super().__init__(**x)
-        self.lb = Label(text='Это наш скачивальщик!')
+        self.lb = Label(text='Это наш скачивальщик!', font_size = '30dp')
         self.btn = Button(text='Скачать')
         line1 = BoxLayout(orientation='vertical', padding=50)
 
@@ -27,7 +27,7 @@ class Scr1(Screen):
 class Scr2(Screen):
     def __init__(self, **x):
         super().__init__(**x)
-        self.btn2 = Button(text='Назад')
+        self.btn2 = Button(text='Назад', pos_hint={'center_x': 0.5, 'center_y': 0.2},  size_hint=(0.3, 0.2))
         self.add_widget(self.btn2)
         self.btn2.on_press = self.gofirst
     def gofirst(self):
