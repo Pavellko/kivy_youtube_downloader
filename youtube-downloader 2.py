@@ -50,15 +50,18 @@ class Scr2(Screen):
       self.img2 = Image()
       self.img2.source = 'not-bad.jpg'
       self.outer = BoxLayout(orientation='vertical', padding=50, spacing=8)
-      self.instr = Label(text = '', font_size = '30dp')
+      self.instr = Label(text = '', font_size = '20dp')
       self.instr.text = 'Файл скачивается!'
       self.btn3 = Button(text='НАЗАД', pos_hint={'center_x': 0.5},  size_hint=(0.3, 0.1))
+      self.btn4 = Button(text='Play', pos_hint={'center_x': 0.5},  size_hint=(0.3, 0.1))
       self.btn3.background_color = (1,0,0,1)
 
       self.btn3.on_press = self.nazad
+      self.btn4.on_press = self.play
       self.outer.add_widget(self.img2)
       self.outer.add_widget(self.instr)
       self.outer.add_widget(self.btn3)
+      self.outer.add_widget(self.btn4)
       self.add_widget(self.outer)
       self.on_enter = self.before
   
@@ -73,11 +76,13 @@ class Scr2(Screen):
          self.img2.source = 'bad.jpg'
 
    def nazad(self):
+      self.manager.current = 'scr1'
+
+   def play(self):
       import glob
       file_name=glob.glob('*.mp4')[0]
       self.instr.text = file_name
       os.startfile(file_name)
-
 
 class Windows10(App):
 
