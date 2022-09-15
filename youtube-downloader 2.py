@@ -18,9 +18,9 @@ class Scr1(Screen):
 
       img1 = Image(source="puls2.jpg")
 
-      pulse1 = Label(text="Скачиваем музычку!", size_hint=(0.5, 0.5), pos_hint={'center_x': 0.5}, font_size = '30dp' )
+      pulse1 = Label(text="Скачиваем музыку!", size_hint=(0.5, 0.5), pos_hint={'center_x': 0.5}, font_size = '30dp' )
             
-      imya1 = Label(text='Закидывай сюда ссылочку на Ютюб', size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5})
+      imya1 = Label(text='Закидывай сюда ссылку на Ютюб', size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5})
       self.in_name = TextInput(size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5}, multiline=False)
 
       self.btn = Button(text='Погнали!', pos_hint={'center_x': 0.5},  size_hint=(0.5, 0.2))
