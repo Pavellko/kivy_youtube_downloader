@@ -9,7 +9,7 @@ from kivy.uix.image import Image
 
 from pytube import YouTube
 
-Window.clearcolor = '#d62926'
+Window.clearcolor = (1,0,0,1)
 class Scr1(Screen):
    ''' Тут виджеты первого экрана'''
    def __init__(self, **kwargs):
@@ -24,6 +24,7 @@ class Scr1(Screen):
 
       self.btn = Button(text='Погнали!', pos_hint={'center_x': 0.5},  size_hint=(0.5, 0.2))
       self.btn.background_color = (1,0,0,1)
+
       line1 = BoxLayout(orientation='vertical', padding=50)
 
       line1.add_widget(img1)
@@ -51,7 +52,7 @@ class Scr2(Screen):
       self.outer = BoxLayout(orientation='vertical', padding=50, spacing=8)
       self.instr = Label(text = '', font_size = '30dp')
       self.instr.text = 'Файл скачивается!'
-      self.btn3 = Button(text='Ещё разок?', pos_hint={'center_x': 0.5},  size_hint=(0.3, 0.1))
+      self.btn3 = Button(text='Ещё разок?', pos_hint={'center_x': 0.5},  size_hint=(0.3, 0.2))
       self.btn3.background_color = (1,0,0,1)
 
       self.btn3.on_press = self.nazad
