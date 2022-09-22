@@ -8,8 +8,7 @@ from kivy.core.window import Window
 from kivy.uix.image import Image
 
 
-import moviepy
-from moviepy.editor import *
+import subprocess, webbrowser
 
 from pytube import YouTube
 import os
@@ -85,9 +84,12 @@ class Scr2(Screen):
       self.manager.current = 'scr1'
 
    def play(self):
-      import glob
-      file_name=glob.glob('*.mp4')[0]      
-      os.startfile(file_name)
+      file_name = self.instr.text
+      for i in file_name:
+            if not (i.isalpha() or  i.isalnum()):    
+               file_name = file_name.replace(i, '-')    
+      os.rename(self.instr.text+'.mp4', file_name+'.mp4')  
+      webbrowser.open(file_name+'.mp4')
 
 class Windows10(App):
 
