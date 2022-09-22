@@ -7,10 +7,14 @@ from kivy.uix.textinput import TextInput
 from kivy.core.window import Window
 from kivy.uix.image import Image
 
+
+import moviepy
+from moviepy.editor import *
+
 from pytube import YouTube
 import os
 
-Window.clearcolor = '#d62926'
+Window.clearcolor = (1,0,0,1)
 class Scr1(Screen):
    ''' Тут виджеты первого экрана'''
    def __init__(self, **kwargs):
@@ -71,6 +75,8 @@ class Scr2(Screen):
          yt = YouTube(str(link))
          videos = yt.streams.get_audio_only()
          videos.download()
+         self.instr.text = videos.title
+
       except:
          self.instr.text = 'Какая-то беда со ссылкой, не могу скачать...'
          self.img2.source = 'bad.jpg'
@@ -80,8 +86,7 @@ class Scr2(Screen):
 
    def play(self):
       import glob
-      file_name=glob.glob('*.mp4')[0]
-      self.instr.text = file_name
+      file_name=glob.glob('*.mp4')[0]      
       os.startfile(file_name)
 
 class Windows10(App):
