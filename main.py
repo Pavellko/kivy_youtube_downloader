@@ -9,17 +9,18 @@ from kivy.uix.image import Image
 
 from pytube import YouTube
 
-Window.clearcolor = (0.24, 0.38, 0.66, 1)
+Window.clearcolor = (0.35, 0.06, 0.86, 1)
 link = ''
 class Scr1(Screen):
     def __init__(self, **x):
         super().__init__(**x)
         self.img = Image( source="puls2.jpg" )
 
-        self.lb = Label(text='Это наш скачивальщик!', font_size = '30dp')
+        self.lb = Label(text='Это наш скачивальщик!', font_size = '38')
         self.link = TextInput( size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5} )
 
-        self.btn = Button(text='Скачать')
+        self.btn = Button(text='Скачать', pos_hint={'center_x': 0.5, 'center_y': 0.2},  size_hint=(0.3, 0.2))
+        self.btn.background_color = (0.2, 0.4, 0.8)
         line1 = BoxLayout(orientation='vertical', padding=50)
 
         line1.add_widget(self.img)
@@ -40,20 +41,15 @@ class Scr2(Screen):
         super().__init__(**x)
         self.btn2 = Button(text='Назад', pos_hint={'center_x': 0.5, 'center_y': 0.2},  size_hint=(0.3, 0.2))
         self.add_widget(self.btn2)
-
-        self.on_enter = self.funk2
         self.btn2.on_press = self.gofirst
+        
+        self.on_enter = self.funk2
+        
     def gofirst(self):
         self.manager.current = 'scr1'
     def funk2(self):
-        global link
-        
-        YouTube(str(link)).streams.get_audio_only().download()
-
-
-    
-
-
+        global link        
+        # YouTube(str(link)).streams.get_audio_only().download()
 
 class Windows10(App):
     def build(self):
